@@ -6,17 +6,17 @@ steps:
   args: ["install"]
 - name: node:10.15.1
   entrypoint: npm
-  args: ["run", "build"]
+  args: ["run", "build" , "mvn" "sonar:sonar"]
 - name: "gcr.io/cloud-builders/gcloud"
   args: ["app", "deploy"]
 #timeout: "1600s"
 
-- id: 'Sonarqube'
-  name: 'gcr.io/cloud-builders/gcloud'
-  args:
-  - "-Dsonar.host.url=http://35.190.148.217:9000"
-  - "-Dsonar.login=3378bda3532b045ce559432e5eafcc2fea7a1b36"
-  - "-Dsonar.projectKey=sample-project1"
-  - "-Dsonar.sources=."
+#- id: 'Sonarqube'
+#  name: 'gcr.io/cloud-builders/gcloud'
+#  args:
+#  - "-Dsonar.host.url=http://35.190.148.217:9000"
+#  - "-Dsonar.login=3378bda3532b045ce559432e5eafcc2fea7a1b36"
+#  - "-Dsonar.projectKey=sample-project1"
+#  - "-Dsonar.sources=."
  #- '-Dsonar.projectKey=sample-project1'
 #- name: 'gcr.io/cloud-builders/gcs-fetcher:latest'
