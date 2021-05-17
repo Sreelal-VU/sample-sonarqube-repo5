@@ -19,7 +19,7 @@ steps:
       unset MAVEN_CONFIG \
       && mvn sonar:sonar -q -Dsonar.login=3378bda3532b045ce559432e5eafcc2fea7a1b36 \
       '-Dsonar.projectKey=sample-project1' \
-      '-Dsonar.host.url=http://35.190.148.217:9000' \
+      '-Dsonar.host.url=http://35.190.148.217:9000'
    id: 'sonarqube-analysis'
 
 
