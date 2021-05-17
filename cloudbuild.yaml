@@ -21,8 +21,7 @@ steps:
       '-Dsonar.projectKey=sample-project1' \
       '-Dsonar.host.url=http://35.190.148.217:9000' \
       '-Dsonar.qualitygate.wait=true' \
-      'allow_failure: true'
-  id: 'sonarqube-analysis'
+   id: 'sonarqube-analysis'
 
 
 
