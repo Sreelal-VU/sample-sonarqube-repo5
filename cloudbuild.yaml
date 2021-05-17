@@ -11,16 +11,27 @@ steps:
   args: ["app", "deploy"]
 #timeout: "1600s"
 
-- name: 'maven:3.6.1-jdk-8'
-  entrypoint: 'bash'
+- name: gcr.io/$PROJECT_ID/sonar-scanner:latest
   args:
-    - -c
-    - |
-      unset MAVEN_CONFIG \
-      -Dsonar.login=3378bda3532b045ce559432e5eafcc2fea7a1b36 \
-      '-Dsonar.projectKey=sample-project1' \
-      '-Dsonar.host.url=http://35.190.148.217:9000'
-  id: 'sonarqube-analysis'
+    - '-Dsonar.host.url=http://35.190.148.217:9000'
+    - '-Dsonar.login=3378bda3532b045ce559432e5eafcc2fea7a1b36'
+    - '-Dsonar.projectKey=sample-project1'
+    - '-Dsonar.sources=.'
+
+
+
+
+#- name: 'maven:3.6.1-jdk-8'
+#  entrypoint: 'bash'
+#  args:
+#    - -c
+#    - |
+#      unset MAVEN_CONFIG \
+##      && mvn sonar:sonar -q
+#      -Dsonar.login= \
+#      '-Dsonar.projectKey=' \
+#      '-Dsonar.host.url='
+#  id: 'sonarqube-analysis'
 
 
 
