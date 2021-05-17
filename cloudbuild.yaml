@@ -6,10 +6,26 @@ steps:
   args: ["install"]
 - name: node:10.15.1
   entrypoint: npm
-  args: ["run", "build" , "mvn" "sonar:sonar"]
+  args: ["run", "build"]
 - name: "gcr.io/cloud-builders/gcloud"
   args: ["app", "deploy"]
 #timeout: "1600s"
+
+- name: 'maven:3.6.1-jdk-8'
+  entrypoint: 'bash'
+  args:
+    - -c
+    - |
+      unset MAVEN_CONFIG \
+     && mvn sonar:sonar -q -Dsonar.login=3378bda3532b045ce559432e5eafcc2fea7a1b36 \
+      '-Dsonar.projectKey=sample-project1' \
+    #  '-Dsonar.projectName=ODP-DF-PUBSUB-SFTP' \
+      '-Dsonar.host.url=http://35.190.148.217:9000' \
+      '-Dsonar.qualitygate.wait=true' \
+      'allow_failure: true'
+  id: 'sonarqube-analysis'
+
+
 
 #- id: 'Sonarqube'
 #  name: 'gcr.io/cloud-builders/gcloud'
