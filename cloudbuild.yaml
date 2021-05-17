@@ -9,10 +9,9 @@ steps:
   args: ["app", "deploy"]
 #timeout: "1600s"
 - id: 'Sonarqube'
-  name: 'gcr.io/cloud-builders/gcloud' -v
+  name: 'gcr.io/cloud-builders/gcs-fetcher' -v
   args:
-  [
   - '-Dsonar.host.url=http://35.190.148.217:9000'
   - '-Dsonar.login=3378bda3532b045ce559432e5eafcc2fea7a1b36'
   - '-Dsonar.projectKey=sample-project1'
- ]
+ 
